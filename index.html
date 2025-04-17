@@ -31,6 +31,16 @@
 
       <label for="grandTotal">Final Total (Bill + Tax + Tip):</label>
       <input type="text" id="grandTotal" name="grandTotal" disabled class="disabled">
+
+      <label for="currency">Convert Final Total To:</label>
+      <select id="currency" name="currency">
+        <option value="">-- Select Currency --</option>
+        <option value="inr">Indian Rupee (₹) - 1 USD = 83.28 INR</option>
+        <option value="eur">Euro (€) - 1 USD = 0.93 EUR</option>
+      </select>
+
+      <label for="convertedTotal">Converted Amount:</label>
+      <input type="text" id="convertedTotal" name="convertedTotal" disabled class="disabled">
     </form>
   </div>
 
