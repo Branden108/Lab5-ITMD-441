@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const tipAmount = document.getElementById("tipAmount");
   const totalWithTip = document.getElementById("totalWithTip");
   const totalWithTax = document.getElementById("totalWithTax");
+  const grandTotal = document.getElementById("grandTotal");
   const errorMsg = document.getElementById("error");
 
   function updateValues() {
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tipAmount.value = "";
       totalWithTip.value = "";
       totalWithTax.value = "";
+      grandTotal.value = "";
       return;
     } else {
       errorMsg.textContent = "";
@@ -25,11 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
     tipPercentage.value = tip;
     const tipValue = bill * (tip / 100);
     const totalTip = bill + tipValue;
-    const taxValue = bill > 0 ? bill * 1.11 : 0;
+    const taxValue = bill * 0.11;
+    const finalTotal = bill + taxValue + tipValue;
 
     tipAmount.value = tipValue.toFixed(2);
     totalWithTip.value = totalTip.toFixed(2);
-    totalWithTax.value = bill > 0 ? taxValue.toFixed(2) : "";
+    totalWithTax.value = (bill + taxValue).toFixed(2);
+    grandTotal.value = finalTotal.toFixed(2);
   }
 
   billInput.addEventListener("input", function () {
@@ -39,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tipAmount.value = "";
       totalWithTip.value = "";
       totalWithTax.value = "";
+      grandTotal.value = "";
       errorMsg.textContent = "";
     } else {
       updateValues();
