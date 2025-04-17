@@ -42,10 +42,10 @@ label {
 
 input[type="text"],
 input[type="range"] {
-  padding: 10px;
+  padding: 12px;
   border: 2px solid #ccc;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 17px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   background-color: #f9f9f9;
 }
@@ -59,8 +59,11 @@ input[type="range"]:focus {
 
 input.disabled {
   background-color: #eeeeee;
-  color: #999;
+  color: #111;
+  font-weight: bold;
   border: 2px dashed #bbb;
+  font-size: 18px;
+  text-align: right;
 }
 
 .error {
