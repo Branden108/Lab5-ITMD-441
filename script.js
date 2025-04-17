@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const grandTotal = document.getElementById("grandTotal");
   const errorMsg = document.getElementById("error");
 
+  const currencySelect = document.getElementById("currency");
+  const convertedTotal = document.getElementById("convertedTotal");
+
   function updateValues() {
     const bill = parseFloat(billInput.value);
     const tip = parseInt(tipSlider.value);
@@ -19,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       totalWithTip.value = "";
       totalWithTax.value = "";
       grandTotal.value = "";
+      convertedTotal.value = "";
       return;
     } else {
       errorMsg.textContent = "";
@@ -34,6 +38,18 @@ document.addEventListener("DOMContentLoaded", function () {
     totalWithTip.value = totalTip.toFixed(2);
     totalWithTax.value = (bill + taxValue).toFixed(2);
     grandTotal.value = finalTotal.toFixed(2);
+    
+    if (!currencySelect.value) {
+      convertedTotal.value = "";
+    } else {
+      let converted = "";
+      if (currencySelect.value === "inr") {
+        converted = "₹" + (finalTotal * 83.28).toFixed(2);
+      } else if (currencySelect.value === "eur") {
+        converted = "€" + (finalTotal * 0.93).toFixed(2);
+      }
+      convertedTotal.value = converted;
+    }
   }
 
   billInput.addEventListener("input", function () {
@@ -44,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       totalWithTip.value = "";
       totalWithTax.value = "";
       grandTotal.value = "";
+      convertedTotal.value = "";
       errorMsg.textContent = "";
     } else {
       updateValues();
@@ -51,4 +68,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   tipSlider.addEventListener("input", updateValues);
+  currencySelect.addEventListener("change", updateValues);
 });
